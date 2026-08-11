@@ -154,7 +154,7 @@
     <h1>Meta m'affichait 4,60 € par vente.<br>Le vrai chiffre était <em>140 €</em>.</h1>
     <p class="sub">Même campagne, même journée, même compte. Ce guide vous montre comment recevoir <strong>chaque matin une analyse de vos pubs Meta par email</strong>, pour ne plus découvrir le problème vingt jours trop tard.</p>
     <p class="price">Google Sheets, un agent IA, deux scripts gratuits. Zéro euro d'outils.</p>
-    <a class="btn" href="guide-pilotez-vos-pubs-meta.pdf" download>Télécharger le guide (PDF, 22 pages)</a>
+    <a class="btn dl-guide" href="guide-pilotez-vos-pubs-meta.pdf" download>Télécharger le guide (PDF, 22 pages)</a>
     <p class="reassure">Téléchargement immédiat · <b>Aucun email à laisser</b> · Construit sur une vraie campagne, chiffres réels</p>
   </div>
 </header>
@@ -284,7 +284,7 @@
   <div class="wrap narrow">
     <h2>Arrêtez de surveiller. Déléguez.</h2>
     <p>Le guide complet, gratuit, sans contrepartie. Vous le lisez ce soir, vous l'installez demain matin.</p>
-    <a class="btn" href="guide-pilotez-vos-pubs-meta.pdf" download>Télécharger le guide (PDF, 22 pages)</a>
+    <a class="btn dl-guide" href="guide-pilotez-vos-pubs-meta.pdf" download>Télécharger le guide (PDF, 22 pages)</a>
     <p class="reassure">Vous l'avez trouvé utile ? <a class="lk" href="https://www.linkedin.com/in/karen-monniaers-1b987829a/" target="_blank" rel="noopener">Dites-le moi sur LinkedIn</a> — vos retours nourrissent la v2.</p>
   </div>
 </section>
@@ -335,6 +335,21 @@
 <!-- Suivi de trafic GoatCounter (gratuit, sans cookie) -->
 <script data-goatcounter="https://guide-meta-ads.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+
+<!-- Suivi des telechargements du guide (evenement GoatCounter) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var lien = e.target.closest('.dl-guide');
+    if (!lien) return;
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path:  'telechargement-guide-pdf',
+        title: 'Telechargement du guide PDF',
+        event: true
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
