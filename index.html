@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilotez vos pubs Meta comme un pro, sans agence — Guide gratuit | Eagle Eye Digital</title>
+<meta name="description" content="Le guide pratique pour recevoir chaque matin une analyse de vos campagnes Meta par email. Google Sheets, un agent IA, deux scripts gratuits. Zéro euro d'outils. Construit sur une vraie campagne.">
+<!-- =========================================================
+     A MODIFIER APRES LA MISE EN LIGNE (etape 4 du README) :
+     remplacez les 3 fois "https://nightfannnnn.github.io/guide-meta-ads"
+     ci-dessous par l'adresse reelle de votre page.
+     Sans ca, l'apercu du lien sur LinkedIn n'affichera pas l'image.
+     ========================================================= -->
+<link rel="canonical" href="https://nightfannnnn.github.io/guide-meta-ads/">
+
+<!-- Partage LinkedIn / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pilotez vos pubs Meta comme un pro, sans agence">
+<meta property="og:description" content="Recevez chaque matin une analyse de vos campagnes par email. Zéro euro d'outils, une demi-journée de mise en place. Guide gratuit, 22 pages, sans email à laisser.">
+<meta property="og:image" content="https://nightfannnnn.github.io/guide-meta-ads/og-image.png">
+<meta property="og:url" content="https://nightfannnnn.github.io/guide-meta-ads/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237640E9'/><text y='72' x='50' font-size='62' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>E</text></svg>">
+
+<style>
+  :root{
+    --violet:#7640E9; --violet-sombre:#5a2bc4; --violet-fond:#f3edff;
+    --noir:#15131a; --gris:#5a5a66; --bord:#e6e2f0;
+    --vert:#0a7a4a; --vert-fond:#e9f7ef; --orange:#c45500; --orange-fond:#fff4e8;
+    --max:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--noir);background:#fff;line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .narrow{max-width:760px;margin:0 auto}
+  a{color:var(--violet)}
+  h1,h2,h3{line-height:1.2;font-weight:800}
+  section{padding:72px 0}
+  .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);font-weight:800}
+  .sec-title{font-size:32px;margin-bottom:14px}
+  .sec-intro{color:var(--gris);margin-bottom:34px;font-size:18px}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(170deg,#f7f4ff 0%,#fff 100%);border-bottom:1px solid var(--bord);padding:56px 0 76px;text-align:center}
+  .hero .kicker{margin-bottom:22px;display:block}
+  .hero h1{font-size:46px;letter-spacing:-.5px;margin-bottom:22px}
+  .hero h1 em{font-style:normal;color:var(--violet)}
+  .hero .sub{font-size:20px;color:var(--gris);max-width:660px;margin:0 auto 12px}
+  .hero .sub strong{color:var(--noir)}
+  .hero .price{font-size:16px;color:var(--gris);margin-bottom:32px}
+  .btn{display:inline-block;background:var(--violet);color:#fff;text-decoration:none;font-weight:800;font-size:19px;padding:18px 40px;border-radius:10px;box-shadow:0 6px 20px rgba(118,64,233,.28);transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{background:var(--violet-sombre);transform:translateY(-2px);box-shadow:0 10px 26px rgba(118,64,233,.34)}
+  .btn-sec{display:inline-block;border:2px solid var(--violet);color:var(--violet);background:#fff;text-decoration:none;font-weight:800;padding:15px 34px;border-radius:10px}
+  .btn-sec:hover{background:var(--violet-fond)}
+  .reassure{font-size:14px;color:var(--gris);margin-top:16px}
+  .reassure b{color:var(--noir)}
+
+  /* ---------- PROBLEME ---------- */
+  .probleme{background:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{border:1px solid var(--bord);border-radius:12px;padding:22px 24px;background:#fff}
+  .card .ico{font-size:24px;line-height:1;margin-bottom:10px}
+  .card h3{font-size:17px;margin-bottom:7px}
+  .card p{font-size:15px;color:var(--gris);margin:0}
+  .verdict{margin-top:34px;padding:22px 26px;background:var(--violet-fond);border-radius:12px;font-size:18px;font-weight:700;text-align:center}
+
+  /* ---------- SYSTEME ---------- */
+  .systeme{background:#faf9fd;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+  .flow{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .brique{display:flex;gap:20px;align-items:flex-start;background:#fff;border:1px solid var(--bord);border-radius:12px;padding:18px 22px}
+  .brique .h{color:var(--violet);font-weight:800;font-size:14px;min-width:62px;padding-top:3px}
+  .brique .txt{font-size:16px}
+  .brique .txt b{font-weight:800}
+  .arrow{color:var(--violet);text-align:center;font-size:15px;line-height:1;margin:-4px 0}
+  .cout{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .pill{background:#fff;border:1px solid var(--bord);border-radius:999px;padding:9px 20px;font-size:15px;font-weight:700}
+  .pill span{color:var(--violet)}
+
+  /* ---------- EXTRAIT ---------- */
+  .extrait{background:#fff;border:1px solid var(--bord);border-radius:14px;padding:28px 30px;box-shadow:0 4px 24px rgba(21,19,26,.05)}
+  .extrait .objet{font-size:13px;color:var(--gris);border-bottom:1px solid var(--bord);padding-bottom:14px;margin-bottom:18px}
+  .extrait .objet b{color:var(--noir);font-size:15px}
+  .extrait p{font-size:15.5px;margin-bottom:13px}
+  .extrait p:last-child{margin-bottom:0}
+  .legende{font-size:15px;color:var(--gris);margin-top:22px;font-style:italic;text-align:center}
+
+  /* ---------- SOMMAIRE ---------- */
+  .sommaire{background:#faf9fd;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+  .som-list{list-style:none;counter-reset:c}
+  .som-list li{counter-increment:c;padding:14px 0 14px 52px;border-bottom:1px solid var(--bord);position:relative;font-size:16.5px}
+  .som-list li:last-child{border-bottom:none}
+  .som-list li:before{content:counter(c);position:absolute;left:0;top:12px;width:32px;height:32px;border-radius:50%;background:var(--violet-fond);color:var(--violet);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .som-list li b{font-weight:700}
+  .som-list li small{display:block;color:var(--gris);font-size:14.5px}
+
+  /* ---------- AUTEUR ---------- */
+  .auteur{display:flex;gap:30px;align-items:flex-start;background:var(--violet-fond);border-radius:14px;padding:34px 36px}
+  .auteur .photo{width:104px;height:104px;border-radius:50%;background:#fff;border:3px solid #fff;box-shadow:0 3px 12px rgba(21,19,26,.12);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;color:var(--violet);overflow:hidden}
+  .auteur .photo img{width:100%;height:100%;object-fit:cover}
+  .auteur h2{font-size:24px;margin-bottom:12px}
+  .auteur p{font-size:16px;margin-bottom:12px}
+  .auteur p:last-child{margin-bottom:0}
+  .btn-lk{display:inline-block;background:#fff;color:var(--violet);text-decoration:none;font-weight:800;font-size:15.5px;padding:12px 24px;border-radius:10px;box-shadow:0 2px 10px rgba(21,19,26,.08)}
+  .btn-lk:hover{background:var(--violet);color:#fff}
+  .final .lk{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+  .final .lk:hover{color:#c4a9ff}
+
+  /* ---------- CTA FINAL ---------- */
+  .final{background:var(--noir);color:#fff;text-align:center}
+  .final h2{font-size:34px;margin-bottom:16px}
+  .final p{color:#c9c6d4;font-size:18px;max-width:600px;margin:0 auto 30px}
+  .final .btn{font-size:20px;padding:20px 46px}
+  .final .reassure{color:#9d99ab;margin-top:18px}
+  .final .reassure b{color:#fff}
+
+  /* ---------- EED ---------- */
+  .eed{background:#fff;text-align:center}
+  .eed .box{background:var(--violet-fond);border-radius:14px;padding:40px}
+  .eed h2{font-size:26px;margin-bottom:16px}
+  .eed p{font-size:16px;max-width:640px;margin:0 auto 14px;color:#3c3946}
+  .eed .liens{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .eed .liens a{background:#fff;border:1px solid var(--bord);border-radius:10px;padding:13px 22px;text-decoration:none;font-weight:700;font-size:15.5px;color:var(--violet)}
+  .eed .liens a:hover{background:var(--violet);color:#fff;border-color:var(--violet)}
+
+  footer{border-top:1px solid var(--bord);padding:32px 0;text-align:center;font-size:14px;color:var(--gris)}
+  footer a{text-decoration:none}
+
+  @media (max-width:760px){
+    body{font-size:16px}
+    section{padding:52px 0}
+    .hero{padding:40px 0 56px}
+    .hero h1{font-size:32px}
+    .hero .sub{font-size:18px}
+    .sec-title{font-size:26px}
+    .btn{display:block;font-size:18px;padding:17px 24px}
+    .auteur{flex-direction:column;align-items:center;text-align:center;padding:28px 22px;gap:18px}
+    .final h2{font-size:27px}
+    .brique{gap:12px;padding:15px 17px}
+    .brique .h{min-width:52px;font-size:13px}
+    .eed .box{padding:28px 20px}
+    .eed .liens a{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Eagle Eye Digital · Guide gratuit pour indépendants</span>
+    <h1>Meta m'affichait 4,60 € par vente.<br>Le vrai chiffre était <em>140 €</em>.</h1>
+    <p class="sub">Même campagne, même journée, même compte. Ce guide vous montre comment recevoir <strong>chaque matin une analyse de vos pubs Meta par email</strong>, pour ne plus découvrir le problème vingt jours trop tard.</p>
+    <p class="price">Google Sheets, un agent IA, deux scripts gratuits. Zéro euro d'outils.</p>
+    <a class="btn" href="guide-pilotez-vos-pubs-meta.pdf" download>Télécharger le guide (PDF, 22 pages)</a>
+    <p class="reassure">Téléchargement immédiat · <b>Aucun email à laisser</b> · Construit sur une vraie campagne, chiffres réels</p>
+  </div>
+</header>
+
+<!-- ================= LE PROBLEME ================= -->
+<section class="probleme">
+  <div class="wrap narrow">
+    <span class="kicker">Le vrai coupable</span>
+    <h2 class="sec-title">Ce n'est presque jamais la plateforme. C'est l'absence de monitoring.</h2>
+    <p class="sec-intro">Vous lancez une pub. Elle démarre bien. Puis la vie d'indépendant reprend : les clients, les livrables, l'administratif. Vous rouvrez Ads Manager vingt jours plus tard. Pendant ce temps, cinq mécanismes ont travaillé contre vous, en silence.</p>
+  </div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="card">
+        <div class="ico">&#128564;</div>
+        <h3>La fatigue publicitaire</h3>
+        <p>Une créa vit deux à trois semaines. Après, chaque affichage coûte plus cher et moins de gens cliquent. Vous payez plein tarif pour une pub morte.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128260;</div>
+        <h3>La saturation</h3>
+        <p>Les mêmes personnes revoient votre pub cinq, sept, dix fois. Au mieux elles vous ignorent. Au pire ça les agace. Et chaque répétition est facturée.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#129503;</div>
+        <h3>Les pubs zombies</h3>
+        <p>Sur quatre pubs, il y en a presque toujours une qui coûte deux à trois fois plus cher pour le même résultat. Sans les chiffres, on ne la coupe jamais.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#127907;</div>
+        <h3>Les faux signaux</h3>
+        <p>Des clics pas chers, ça flatte. Mais ça ne dit pas si ça vend. Sans le coût par vente cumulé, vous optimisez pour de la vanité.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128184;</div>
+        <h3>Le budget qui file</h3>
+        <p>Trois cents, cinq cents, parfois mille euros partis sans résultat. Le réflexe : « la pub Meta, ça ne marche pas pour moi ».</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128200;</div>
+        <h3>Le canal unique</h3>
+        <p>Tout sur la pub, ou tout sur l'organique. Alors que les deux se nourrissent : Meta apporte le volume, LinkedIn transforme en clients.</p>
+      </div>
+    </div>
+    <p class="verdict">Bonne nouvelle : toutes ces dérives laissent des traces visibles dans les chiffres, dès les premiers jours.</p>
+  </div>
+</section>
+
+<!-- ================= LE SYSTEME ================= -->
+<section class="systeme">
+  <div class="wrap narrow">
+    <span class="kicker">Ce que vous allez construire</span>
+    <h2 class="sec-title">Un analyste qui travaille pendant que vous dormez</h2>
+    <p class="sec-intro">Quatre briques gratuites qui s'enchaînent toutes seules. Une demi-journée de mise en place, puis cinq minutes par jour.</p>
+    <div class="flow">
+      <div class="brique"><div class="h">23h50</div><div class="txt">Un <b>script Apps Script</b> interroge l'API de Meta et range les chiffres du jour dans votre <b>Google Sheet</b></div></div>
+      <div class="arrow">&#9660;</div>
+      <div class="brique"><div class="h">8h42</div><div class="txt">Un <b>agent IA</b> qui connaît votre stratégie lit le Sheet, détecte les alertes et rédige votre rapport</div></div>
+      <div class="arrow">&#9660;</div>
+      <div class="brique"><div class="h">8h47</div><div class="txt">Un <b>second script</b> vous l'envoie. Le rapport est dans votre boîte mail avant votre café</div></div>
+      <div class="arrow">&#9660;</div>
+      <div class="brique"><div class="h">Lundi</div><div class="txt">Un <b>bilan hebdo rentabilité</b> (ROI, ROAS) prêt à envoyer à un associé, un client, ou à garder pour vous</div></div>
+    </div>
+    <div class="cout">
+      <div class="pill"><span>0 €</span> d'outils</div>
+      <div class="pill"><span>0</span> abonnement</div>
+      <div class="pill"><span>3h15</span> de mise en place</div>
+      <div class="pill"><span>5 min</span> par jour ensuite</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXTRAIT ================= -->
+<section>
+  <div class="wrap narrow">
+    <span class="kicker">Extrait réel</span>
+    <h2 class="sec-title">Voilà le mail que vous recevez le matin</h2>
+    <p class="sec-intro">Un vrai rapport quotidien de notre campagne, reçu un samedi matin de juillet. Aucun chiffre n'a été retouché.</p>
+    <div class="extrait">
+      <p class="objet">Objet : <b>ID3 Ads · 25/07 · &#9888; VIGILANCE CPA</b></p>
+      <p>&#128203; <b>Résumé J-1.</b> Dépense totale 18,25 € sur 22 € attendus (légèrement sous budget, pas d'alerte) : Champion 10,01 € · Retarg 2,89 € · Labo 5,35 €. Aucun achat ni panier entamé hier.</p>
+      <p>&#128992; <b>Alerte.</b> La nouvelle créa visuelle monopolise 94 % du budget de la campagne principale au détriment de la vidéo V2-A (6 %), alors que V2-A est la seule créa ayant généré des achats. L'algorithme pousse la créa la plus engageante, pas forcément la plus vendeuse. Action requise.</p>
+      <p>&#128308; <b>Rentabilité cumulée.</b> 2 achats pour 781,78 € investis : coût par vente global 390,89 €, ROAS 0,25x.</p>
+      <p>&#9989; <b>Recommandation n°1.</b> Rééquilibrer la campagne : la nouvelle créa n'a généré aucun achat en 2 jours. Envisager de la couper ou de protéger la créa vendeuse avec un budget minimum.</p>
+    </div>
+    <p class="legende">Ce rapport ne recrache pas des chiffres : il raconte une situation et propose une décision. Cette alerte serait passée totalement inaperçue dans Ads Manager.</p>
+  </div>
+</section>
+
+<!-- ================= SOMMAIRE ================= -->
+<section class="sommaire">
+  <div class="wrap narrow">
+    <span class="kicker">Au sommaire</span>
+    <h2 class="sec-title">22 pages, zéro théorie</h2>
+    <p class="sec-intro">Tout est fourni : le code à copier-coller, les prompts complets des deux agents, la checklist de mise en route et la grille de seuils selon votre gamme de prix.</p>
+    <ol class="som-list">
+      <li><b>Vue d'ensemble</b> <small>Votre assistant reporting en quatre briques</small></li>
+      <li><b>Brancher vos campagnes sur un Google Sheet, sans connecteur payant</b> <small>Le jeton Meta, le script complet, les métriques qui comptent</small></li>
+      <li><b>L'agent IA qui analyse vos campagnes chaque matin</b> <small>Comment fixer vos seuils pour qu'il décide au lieu de commenter</small></li>
+      <li><b>Le bilan hebdo orienté rentabilité</b> <small>Les quatre chiffres qui comptent pour un indépendant</small></li>
+      <li><b>L'envoi automatique du rapport</b> <small>Dix lignes de code, et c'est du copier-coller</small></li>
+      <li><b>Votre routine de cinq minutes</b> <small>Toute votre gestion publicitaire sur un post-it</small></li>
+      <li><b>Dépannage express</b> <small>Les six pannes classiques et leur solution</small></li>
+      <li><b>La pub attire, la confiance convertit</b> <small>Ce qu'une pub Meta ne fera jamais pour un indépendant</small></li>
+      <li><b>Annexes</b> <small>Prompts complets, code, checklist en 16 étapes, grille de seuils</small></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= AUTEUR ================= -->
+<section>
+  <div class="wrap narrow">
+    <div class="auteur">
+      <div class="photo">K</div>
+      <div>
+        <h2>Moi ? Je suis Karen, la spécialiste en acquisition digitale de l'entreprise ! &#128075;</h2>
+        <p>Concrètement, mon métier c'est de construire et de piloter ce qui fait venir les clients : les campagnes, les tunnels, les messages, les rendez-vous. LinkedIn en premier, Meta en renfort.</p>
+        <p>La campagne dont vous allez lire les coulisses, c'est la mienne. C'est moi qui ai lancé ces pubs, qui ai vu le coût par vente s'envoler, qui ai cherché pourquoi pendant des soirées entières, et qui me suis retrouvée un matin devant un tableau vide parce que mon outil de reporting venait de me couper l'accès. Tout ce qu'il y a dans ce guide, je l'ai testé, cassé, réparé, puis refait proprement.</p>
+        <p><a class="btn-lk" href="https://www.linkedin.com/in/karen-monniaers-1b987829a/" target="_blank" rel="noopener">&#128279; Me retrouver sur LinkedIn</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="final">
+  <div class="wrap narrow">
+    <h2>Arrêtez de surveiller. Déléguez.</h2>
+    <p>Le guide complet, gratuit, sans contrepartie. Vous le lisez ce soir, vous l'installez demain matin.</p>
+    <a class="btn" href="guide-pilotez-vos-pubs-meta.pdf" download>Télécharger le guide (PDF, 22 pages)</a>
+    <p class="reassure">Vous l'avez trouvé utile ? <a class="lk" href="https://www.linkedin.com/in/karen-monniaers-1b987829a/" target="_blank" rel="noopener">Dites-le moi sur LinkedIn</a> — vos retours nourrissent la v2.</p>
+  </div>
+</section>
+
+<!-- ================= EAGLE EYE DIGITAL ================= -->
+<section class="eed">
+  <div class="wrap narrow">
+    <div class="box">
+      <h2>Qui est Eagle Eye Digital ?</h2>
+      <p>Nous aidons les indépendants, consultants et dirigeants solos à trouver des clients sans y laisser leur santé : accélération LinkedIn avec le <b>LinkedIn Business Accelerator</b>, la <b>Méthode 3C</b>, et chaque année l'<b>Indépendance Day</b> à Toulouse. Une journée, 300 indépendants, 10 experts.</p>
+      <p>Tout ce guide est tiré de nos propres campagnes. Pas de théorie, que du vécu.</p>
+      <div class="liens">
+        <a href="https://calendly.com/nassim-amisse/echange-linkedin-n" target="_blank" rel="noopener">Prendre rendez-vous</a>
+        <a href="https://independance-day.com/" target="_blank" rel="noopener">Notre évent à Toulouse</a>
+        <a href="https://www.la-methode-3c.fr/inscription" target="_blank" rel="noopener">Notre prochain webinaire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOC NEWSLETTER SYSTEME.IO — DÉSACTIVÉ POUR L'INSTANT
+     Pour l'activer plus tard (voir l'étape 6 du README) :
+     1. remplacez la ligne "COLLEZ ICI..." par le code de votre
+        formulaire Systeme.io
+     2. supprimez la ligne juste en dessous de ce cadre qui contient
+        seulement  <!- -  et celle tout en bas qui contient  - ->
+        (sans les espaces)
+============================================================ -->
+<!--
+<section class="sommaire">
+  <div class="wrap narrow" style="text-align:center">
+    <h2 class="sec-title">Une ressource comme celle-ci chaque mois</h2>
+    <p class="sec-intro">Mes tests d'outils, mes campagnes décortiquées, ce qui marche vraiment en acquisition. Rien d'autre.</p>
+    <div class="form-slot">
+      COLLEZ ICI LE CODE DU FORMULAIRE SYSTEME.IO
+    </div>
+  </div>
+</section>
+-->
+
+<footer>
+  <div class="wrap">
+    Guide offert par <a href="https://independance-day.com/" target="_blank" rel="noopener">Eagle Eye Digital</a> · 2026 · Reproduction libre avec mention de la source
+  </div>
+</footer>
+
+</body>
+</html>
